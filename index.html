@@ -19,23 +19,42 @@
     </div>
     <div class="steps">
       <img src="./assets/images/bg-pentagon.svg" alt="Pentagon Placeholder" class="pentagon__placeholder">
-      <button class="circle circle__scissor" onmouseover="PlaySound('scissorSound')" onmouseout="StopSound('scissorSound')">
+      <button class="circle circle__scissor" onclick="PickStep('scissors')" onmouseover="PlaySound('scissorSound')" onmouseout="StopSound('scissorSound')">
         <img src="./assets/images/icon-scissors.svg" alt="Scissors" class="circle__icon">
       </button>
-      <button class="circle circle__spock"
+      <button class="circle circle__spock" onclick="PickStep('spock')" 
       onmouseover="PlaySound('spockSound')" onmouseout="StopSound('spockSound')"
       >
         <img src="./assets/images/icon-spock.svg" alt="Scissors" class="circle__icon">
       </button>
-      <button class="circle circle__lizard">
+      <button class="circle circle__lizard" onclick="PickStep('lizard')" 
+        onmouseover="PlaySound('lizardSound')" onmouseout="StopSound('lizardSound')"
+      >
         <img src="./assets/images/icon-lizard.svg" class="circle__icon">
       </button>
-      <button class="circle circle__rock">
+      <button class="circle circle__rock" onclick="PickStep('rock')" 
+        onmouseover="PlaySound('rockSound')" onmouseout="StopSound('rockSound')"
+      >
         <img src="./assets/images/icon-rock.svg" class="circle__icon">
       </button>
-      <button class="circle circle__paper">
+      <button class="circle circle__paper" onclick="PickStep('paper')" 
+        onmouseover="PlaySound('paperSound')" onmouseout="StopSound('paperSound')"
+      >
         <img src="./assets/images/icon-paper.svg" class="circle__icon">
       </button>
+    </div>
+    <div class="fight hidden">
+      <div class="fight__left">
+        <div class="step__picked">
+        </div>
+        <span>YOU PICKED</span>
+      </div>
+      <div class="fight__right">
+        <div class="right__picked">
+
+        </div>
+        <span>THE HOUSE PICKED</span>
+      </div>
     </div>
     <button popovertarget="rules-popover" class="button rules__btn">RULES</button>
     <div popover id="rules-popover" class="popover">
@@ -56,6 +75,9 @@
   
   <audio id='scissorSound' src='./assets/sounds/scissor.mp3' />
   <audio id='spockSound' src='./assets/sounds/spock.mp3'/>
+  <audio id='lizardSound' src='./assets/sounds/lizard.mp3'/>
+  <audio id='rockSound' src='./assets/sounds/rock.mp3'/>
+  <audio id='paperSound' src='./assets/sounds/paper.mp3'/>
   <script src="index.js"></script>
 </body>
 </html>
