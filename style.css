@@ -285,6 +285,7 @@ body {
   margin-top: 99px;
   display: flex;
   justify-content: space-between;
+  max-width: 700px;
   width: 100%;
 }
 
@@ -380,6 +381,10 @@ body {
   .popover .popover__close-mobile{
     display: none;
   }
+
+  .fight {
+    justify-content: space-around;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -407,5 +412,19 @@ body {
 
   .header__score .score__count {
     font-size: 64px;
+  }
+
+  .fight {
+    justify-content: space-between;
+  }
+  
+  .fight__left {
+    max-width: 100%;
+    width: fit-content;
+  }
+
+  .step__picked {
+    height: 212.81px;
+    width: 224.63px;
   }
 }

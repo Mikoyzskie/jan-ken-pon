@@ -46,7 +46,9 @@ function PickStep(step){
     pickedIcon.className = "circle__icon";
     pickedIcon.src = stepToImage[step]
     userPicked.appendChild(pickedIcon);
-    userPicked.classList.add(step)
+    userPicked.classList.add(step);
+    userPicked.classList.add("animate__animated");
+    userPicked.classList.add("animate__flip");
   }
 
   // switch(step){
