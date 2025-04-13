@@ -26,37 +26,60 @@ const steps = {
  SPOCK: "spock",
 };
 
-const stepToImage = {
- [steps.ROCK]: "./assets/images/icon-rock.svg",
- [steps.PAPER]: "./assets/images/icon-paper.svg",
- [steps.SCISSORS]: "./assets/images/icon-scissors.svg",
- [steps.LIZARD]: "./assets/images/icon-lizard.svg",
- [steps.SPOCK]: "./assets/images/icon-spock.svg",
+const stepAssets = {
+ [steps.ROCK]: {
+  url: "./assets/images/icon-rock.svg",
+ },
+ [steps.PAPER]: {
+  url: "./assets/images/icon-paper.svg",
+ },
+ [steps.SCISSORS]: {
+  url: "./assets/images/icon-scissors.svg",
+ },
+ [steps.LIZARD]: {
+  url: "./assets/images/icon-lizard.svg",
+ },
+ [steps.SPOCK]: {
+  url: "./assets/images/icon-spock.svg", },
 };
 
+if(stepsContainer && fightContainer){
 
-function PickStep(step){
+  function PickStep(step){
 
-  if(stepsContainer && fightContainer){
-    stepsContainer.classList.add("hidden");
+  stepsContainer.classList.add("hidden");
     fightContainer.classList.remove("hidden");
 
     const userPicked = fightContainer.querySelector(".step__picked");
     const pickedIcon = document.createElement("img");
     pickedIcon.className = "circle__icon";
-    pickedIcon.src = stepToImage[step]
+    pickedIcon.src = stepAssets[step].url;
     userPicked.appendChild(pickedIcon);
     userPicked.classList.add(step);
     userPicked.classList.add("animate__animated");
     userPicked.classList.add("animate__flip");
+    
+    setTimeout(ShowComputerPick, 2000);
   }
 
-  // switch(step){
-  //   case "scissor":
+  function ShowComputerPick(){
+    const computerPicked = fightContainer.querySelector(".right__picked");
+    const computerPickedIcon = document.createElement("img");
+    computerPicked.classList.add("computer__picked");
+    const randomNumber = Math.floor(Math.random() * 5);
 
-  //     break;
-  // }
-  
+    const iconValues = Object.values(stepAssets);
+
+    computerPickedIcon.className = "circle__icon";
+    computerPickedIcon.src = iconValues[randomNumber].url;
+    computerPicked.appendChild(computerPickedIcon);
+
+    const stepValues = Object.values(steps);
+
+    computerPicked.classList.add(stepValues[randomNumber]);
+    computerPicked.classList.add("animate__animated");
+    computerPicked.classList.add("animate__flip");
+  }
 }
 
 function PlaySound(soundobj) {
