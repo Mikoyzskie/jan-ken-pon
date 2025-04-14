@@ -60,6 +60,19 @@ if(stepsContainer && fightContainer){
     userPicked.classList.add("animate__flip");
     
     setTimeout(ShowComputerPick, 2000);
+
+    setTimeout(()=>{
+      fightContainer.classList.add("test");
+    }, 3000)
+
+    setTimeout(DisplayResult, 4000);
+  }
+
+  function DisplayResult(){
+    const wins = document.createElement("h1");
+    wins.className = "winner";
+    wins.innerText = "You Win!";
+    fightContainer.appendChild(wins);
   }
 
   function ShowComputerPick(){

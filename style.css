@@ -287,6 +287,7 @@ body {
   justify-content: space-between;
   max-width: 700px;
   width: 100%;
+  gap: 400px;
 }
 
 .fight__left, .fight__right {
@@ -299,11 +300,13 @@ body {
 }
 
 .fight__left{
-  max-width: 130px;
+  flex: 1;
+  max-width: 224.62px;
 }
 
 .fight__right {
-  max-width: 145px;
+  flex: 1;
+  max-width: 224.62px;
 }
 
 .left__picked, .right__picked {
@@ -363,6 +366,20 @@ body {
       0 2px 0 15px var(--dark-lizard);
 }
 
+.test{
+  transition: all 0.3s ease-in-out;
+    max-width: 900px;
+    position: relative
+  }
+
+.winner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  text-align: center;
+}
 
 @media only screen and (min-width: 475px){
   .popover__wrapper {
@@ -441,12 +458,14 @@ body {
     height: 100%;
   }
 
+  
+
   .rock{
-  box-shadow: 
-      0 -11.38px 0 0 var(--gray-border),
-      0 -5px 0 34px var(--rock),
-      0 10px 0 34px var(--dark-rock);
-}
+    box-shadow: 
+        0 -11.38px 0 0 var(--gray-border),
+        0 -5px 0 34px var(--rock),
+        0 10px 0 34px var(--dark-rock);
+  }
 
 .paper{
   box-shadow: 
