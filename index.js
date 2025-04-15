@@ -69,10 +69,28 @@ if(stepsContainer && fightContainer){
   }
 
   function DisplayResult(){
-    const wins = document.createElement("h1");
+    const wins = document.createElement("div");
     wins.className = "winner";
-    wins.innerText = "You Win!";
+    wins.classList.add("animate__animated");
+    wins.classList.add("animate__bounce");
+    wins.innerHTML = "<h1>You Win</h1>";
     fightContainer.appendChild(wins);
+    const playButton = document.createElement("button");
+    playButton.innerText = "PLAY AGAIN";
+    wins.appendChild(playButton);
+    
+    playButton.addEventListener("click", ()=>{
+      stepsContainer.classList.remove("hidden");
+      fightContainer.classList.add("hidden");
+      fightContainer.classList.remove("test");
+      fightContainer.removeChild(wins);
+      const computerPicked = fightContainer.querySelector(".right__picked");
+      computerPicked.innerHTML= "";
+      computerPicked.className = "right__picked";
+      const userPicked = fightContainer.querySelector(".step__picked");
+      const PickedIcon = userPicked.querySelector(".circle__icon");
+      userPicked.removeChild(PickedIcon);
+    })
   }
 
   function ShowComputerPick(){
