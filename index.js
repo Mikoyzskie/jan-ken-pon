@@ -29,18 +29,24 @@ const steps = {
 const stepAssets = {
  [steps.ROCK]: {
   url: "./assets/images/icon-rock.svg",
+  rule: [steps[SCISSORS], steps[LIZARD]],
  },
  [steps.PAPER]: {
   url: "./assets/images/icon-paper.svg",
+  rule: [steps[ROCK], steps[SPOCK]],
  },
  [steps.SCISSORS]: {
   url: "./assets/images/icon-scissors.svg",
+  rule: [steps[PAPER], steps[LIZARD]],
  },
  [steps.LIZARD]: {
   url: "./assets/images/icon-lizard.svg",
+  rule: [steps[PAPER], steps[SPOCK]],
  },
  [steps.SPOCK]: {
-  url: "./assets/images/icon-spock.svg", },
+  url: "./assets/images/icon-spock.svg",
+  rule: [steps[ROCK], steps[SCISSORS]],
+ },
 };
 
 if(stepsContainer && fightContainer){
