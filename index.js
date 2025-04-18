@@ -4,20 +4,6 @@ const fightContainer = document.querySelector(".fight");
 
 const scoreCount = scoreContainer.querySelector(".score__count");
 
-let currentScore = 0
-
-
-if(stepsContainer){
-  const scissorButton = stepsContainer.querySelector(".circle__scissor");
-
-  scissorButton.addEventListener("click", ()=>{
-    currentScore++;
-    if (scoreContainer && scoreCount) {
-     scoreCount.innerText = currentScore;
-    }
-  })
-}
-
 const steps = {
  ROCK: "rock",
  PAPER: "paper",
@@ -29,27 +15,28 @@ const steps = {
 const stepAssets = {
  [steps.ROCK]: {
   url: "./assets/images/icon-rock.svg",
-  rule: [steps[SCISSORS], steps[LIZARD]],
+  rule: [steps.SCISSORS, steps.LIZARD],
  },
  [steps.PAPER]: {
   url: "./assets/images/icon-paper.svg",
-  rule: [steps[ROCK], steps[SPOCK]],
+  rule: [steps.ROCK, steps.SPOCK],
  },
  [steps.SCISSORS]: {
   url: "./assets/images/icon-scissors.svg",
-  rule: [steps[PAPER], steps[LIZARD]],
+  rule: [steps.PAPER, steps.LIZARD],
  },
  [steps.LIZARD]: {
   url: "./assets/images/icon-lizard.svg",
-  rule: [steps[PAPER], steps[SPOCK]],
+  rule: [steps.PAPER, steps.SPOCK],
  },
  [steps.SPOCK]: {
   url: "./assets/images/icon-spock.svg",
-  rule: [steps[ROCK], steps[SCISSORS]],
+  rule: [steps.ROCK, steps.SCISSORS],
  },
 };
 
 if(stepsContainer && fightContainer){
+  let currentScore = 0;
 
   function PickStep(step){
 
@@ -65,13 +52,18 @@ if(stepsContainer && fightContainer){
     userPicked.classList.add("animate__animated");
     userPicked.classList.add("animate__flip");
     
-    setTimeout(ShowComputerPick, 2000);
-
+    setTimeout(()=>{
+      ShowComputerPick();
+    }, 2000);
+    
     setTimeout(()=>{
       fightContainer.classList.add("test");
     }, 3000)
-
-    setTimeout(DisplayResult, 4000);
+    
+    setTimeout(()=>{
+      
+      DisplayResult()
+    }, 4000);
   }
 
   function DisplayResult(){
@@ -96,6 +88,7 @@ if(stepsContainer && fightContainer){
       const userPicked = fightContainer.querySelector(".step__picked");
       const PickedIcon = userPicked.querySelector(".circle__icon");
       userPicked.removeChild(PickedIcon);
+      userPicked.className = "step__picked";
     })
   }
 
@@ -116,6 +109,8 @@ if(stepsContainer && fightContainer){
     computerPicked.classList.add(stepValues[randomNumber]);
     computerPicked.classList.add("animate__animated");
     computerPicked.classList.add("animate__flip");
+
+    return stepValues[randomNumber];
   }
 }
 
