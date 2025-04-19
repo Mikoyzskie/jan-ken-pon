@@ -40,7 +40,7 @@ if(stepsContainer && fightContainer){
 
   function PickStep(step){
 
-  stepsContainer.classList.add("hidden");
+    stepsContainer.classList.add("hidden");
     fightContainer.classList.remove("hidden");
 
     const userPicked = fightContainer.querySelector(".step__picked");
@@ -57,7 +57,7 @@ if(stepsContainer && fightContainer){
     }, 2000);
     
     setTimeout(()=>{
-      fightContainer.classList.add("test");
+      fightContainer.classList.add("fight__club");
     }, 3000)
     
     setTimeout(()=>{
@@ -80,7 +80,7 @@ if(stepsContainer && fightContainer){
     playButton.addEventListener("click", ()=>{
       stepsContainer.classList.remove("hidden");
       fightContainer.classList.add("hidden");
-      fightContainer.classList.remove("test");
+      fightContainer.classList.remove("fight__club");
       fightContainer.removeChild(wins);
       const computerPicked = fightContainer.querySelector(".right__picked");
       computerPicked.innerHTML= "";
