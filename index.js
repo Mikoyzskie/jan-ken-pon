@@ -51,9 +51,12 @@ if(stepsContainer && fightContainer){
     userPicked.classList.add(step);
     userPicked.classList.add("animate__animated");
     userPicked.classList.add("animate__flip");
+
+    const randomNumber = Math.floor(Math.random() * 5);
+    const stepValues = Object.values(steps);
     
     setTimeout(()=>{
-      ShowComputerPick();
+      ShowComputerPick(stepValues[randomNumber]);
     }, 2000);
     
     setTimeout(()=>{
@@ -62,16 +65,26 @@ if(stepsContainer && fightContainer){
     
     setTimeout(()=>{
       
-      DisplayResult()
+      DisplayResult(stepAssets[step], stepValues[randomNumber]);
     }, 4000);
   }
 
-  function DisplayResult(){
+  function DisplayResult(user, computer){
+    let result = ""
+    if(user.rule.includes(computer)){
+      currentScore++;
+      scoreCount.innerText = currentScore;
+      result = "<h1>You Win</h1>";
+    }else if (!user.rule.includes(computer)) {
+      result = "<h1>You Lose</h1>";
+    } else {
+     ("<h1>It's a Tie</h1>");
+    }
     const wins = document.createElement("div");
     wins.className = "winner";
     wins.classList.add("animate__animated");
     wins.classList.add("animate__bounce");
-    wins.innerHTML = "<h1>You Win</h1>";
+    wins.innerHTML = result;
     fightContainer.appendChild(wins);
     const playButton = document.createElement("button");
     playButton.innerText = "PLAY AGAIN";
@@ -92,25 +105,18 @@ if(stepsContainer && fightContainer){
     })
   }
 
-  function ShowComputerPick(){
+  function ShowComputerPick(computer){
     const computerPicked = fightContainer.querySelector(".right__picked");
     const computerPickedIcon = document.createElement("img");
     computerPicked.classList.add("computer__picked");
-    const randomNumber = Math.floor(Math.random() * 5);
-
-    const iconValues = Object.values(stepAssets);
 
     computerPickedIcon.className = "circle__icon";
-    computerPickedIcon.src = iconValues[randomNumber].url;
+    computerPickedIcon.src = stepAssets[computer].url;
     computerPicked.appendChild(computerPickedIcon);
 
-    const stepValues = Object.values(steps);
-
-    computerPicked.classList.add(stepValues[randomNumber]);
+    computerPicked.classList.add(computer);
     computerPicked.classList.add("animate__animated");
     computerPicked.classList.add("animate__flip");
-
-    return stepValues[randomNumber];
   }
 }
 
@@ -123,8 +129,4 @@ function StopSound(soundobj) {
  var thissound = document.getElementById(soundobj);
  thissound.pause();
  thissound.currentTime = 0;
-}
-
-function RandomNumber(){
-  return Math.floor(Math.random() * 5);
 }
